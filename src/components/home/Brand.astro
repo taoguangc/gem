@@ -1,0 +1,98 @@
+---
+import { Picture } from '@astrojs/image/components'
+---
+
+<section class="py-8">
+  <div class="sm:px-8 flex flex-col">
+    <h3
+      class="text-center md:text-left text-xs tracking-widest pb-16 relative after:absolute after:left-1/2 md:after:left-0 after:-ml-4 md:after:ml-0 after:top-8 after:w-8 after:h-px after:bg-neutral-300"
+    >
+      我们的宝石矿与品牌
+    </h3>
+    <h2 class="text-center md:text-left text-4xl lg:text-5xl 2xl:text-6xl font-light leading-tight mb-8">
+      宝石矿与品牌
+    </h2>
+  </div>
+</section>
+
+<section class="mx-8 py-8" x-data="{ tab: 1 }">
+  <ul class="flex gap-8 border-b border-neutral-200 text-xs text-neutral-300">
+    <li>
+      <a
+        href="#1"
+        class="relative block py-4"
+        :class="{ 'text-black after:absolute after:left-0 after:-bottom-[1px] after:w-full after:h-px after:bg-black': tab === 1 }"
+        @click.prevent="tab = 1">卡棋穆祖母绿矿</a
+      >
+    </li>
+    <li>
+      <a
+        href="#2"
+        class="relative block py-4"
+        :class="{ 'text-black after:absolute after:left-0 after:-bottom-[1px] after:w-full after:h-px after:bg-black': tab === 2 }"
+        @click.prevent="tab = 2">蒙特普埃兹红宝石矿</a
+      >
+    </li>
+    <li>
+      <a
+        href="#3"
+        class="relative block py-4"
+        :class="{ 'text-black after:absolute after:left-0 after:-bottom-[1px] after:w-full after:h-px after:bg-black': tab === 3 }"
+        @click.prevent="tab = 3">费伯奇</a
+      >
+    </li>
+  </ul>
+  <div class="w-full py-8">
+    <div x-show="tab === 1" x-transition.opacity>
+      <a href="/about/our-mines-and-brands/kagem-emerald-mine/" class="relative group">
+        <Picture
+          src={import('~/assets/images/tabs-image-1.webp')}
+          widths={[400, 1920]}
+          aspectRatio="8:3"
+          format={['avif', 'webp']}
+          alt="tab-1"
+          data-sal="fade"
+        />
+        <div
+          class="absolute left-8 bottom-8 px-8 py-3 border border-white text-xs text-white tracking-widest shadow-white shadow-[inset_0_0_0_0] group-hover:text-black group-hover:shadow-[inset_8rem_0_0_0] group-hover:shadow-white transition-all duration-500"
+        >
+          了解更多
+        </div>
+      </a>
+    </div>
+    <div x-show="tab === 2" x-transition.opacity>
+      <a href="/about/our-mines-and-brands/kagem-emerald-mine/" class="relative group">
+        <Picture
+          src={import('~/assets/images/tabs-image-2.webp')}
+          widths={[400, 1920]}
+          aspectRatio="8:3"
+          format={['avif', 'webp']}
+          alt="tab-2"
+          data-sal="fade"
+        />
+        <div
+          class="absolute left-8 bottom-8 px-8 py-3 border border-white text-xs text-white tracking-widest shadow-white shadow-[inset_0_0_0_0] group-hover:text-black group-hover:shadow-[inset_8rem_0_0_0] group-hover:shadow-white transition-all duration-500"
+        >
+          了解更多
+        </div>
+      </a>
+    </div>
+    <div x-show="tab === 3" x-transition.opacity>
+      <a href="/about/our-mines-and-brands/kagem-emerald-mine/" class="relative group">
+        <Picture
+          src={import('~/assets/images/tabs-image-3.webp')}
+          widths={[400, 1920]}
+          aspectRatio="8:3"
+          format={['avif', 'webp']}
+          alt="tab-3"
+          data-sal="fade"
+        />
+        <div
+          class="absolute left-8 bottom-8 px-8 py-3 border border-white text-xs text-white tracking-widest shadow-white shadow-[inset_0_0_0_0] group-hover:text-black group-hover:shadow-[inset_8rem_0_0_0] group-hover:shadow-white transition-all duration-500"
+        >
+          了解更多
+        </div>
+      </a>
+    </div>
+  </div>
+</section>

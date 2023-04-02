@@ -7,8 +7,15 @@ module.exports = {
 			'md': '768px',
 			'lg': '1024px',
 			'xl': '1280px',
+			'2xl': '1600px',
 		},
 		extend: {
+			colors: {
+				primary: 'rgb(var(--color-primary))',
+				secondary: 'rgb(var(--color-secondary))',
+				light: 'rgb(var(--color-light))',
+				border: 'rgb(var(--color-border))',
+			},
 			boxShadow: {
 				xs: '0 0 0 1px rgba(0, 0, 0, 0.16)',
 				sm: '0 1px 2px 0 rgba(0, 0, 0, 0.16)',
@@ -25,24 +32,18 @@ module.exports = {
 				tighter: '-0.1em',
 				tight: '-0.05em',
 				normal: '0',
-				wide: '0.025em',
-				wider: '0.05em',
-				widest: '0.1em',
+				wide: '0.05em',
+				wider: '0.1em',
+				widest: '0.2em',
+			},
+			lineHeight: {
+				'extra-loose': '2.5',
 			},
 			fontFamily: {
 				inter: ['Inter', 'sans-serif']
 			},
 			animation: {
 				float: 'float 3s ease-in-out infinite',
-			},
-			keyframes: {
-				float: {
-					'0%, 100%': { transform: 'translateY(0)', },
-					'50%': { transform: 'translateY(-5%)', },
-				},
-			},
-			zIndex: {
-				'-1': '-1',
 			},
 		},
 	},

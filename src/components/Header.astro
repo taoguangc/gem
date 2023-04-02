@@ -2,16 +2,20 @@
 import NavItem from './NavItem.astro'
 const items = [
   {
-    title: 'Home',
+    title: 'Top',
     link: '/',
+  },
+  {
+    title: 'About Us',
+    link: '/about',
   },
   {
     title: 'Works',
     link: '/works',
   },
   {
-    title: 'About',
-    link: '/about',
+    title: 'News',
+    link: '/news',
   },
   {
     title: 'Contact',
@@ -21,172 +25,267 @@ const items = [
 ---
 
 <header
-  class="fixed w-full z-50 md:bg-opacity-90 transition duration-300 ease-in-out"
-  x-data="{ top: true }"
-  @scroll.window="top = ( window.pageYOffset > 10 ) ? false : true"
-  :class="{ 'bg-white backdrop-blur backdrop-opacity-90 shadow-lg': ! top }"
+  x-data="{ atTop: false, modal: false }"
+  @scroll.window="atTop = ( window.pageYOffset > 20 ) ? true : false"
+  class="fixed w-full border-b z-30 mx-auto px-6 sm:px-8 text-xs bg-white duration-500"
+  :class='{ "fixed" : atTop }'
 >
-  <div class="max-w-6xl mx-auto px-5 sm:px-6">
-    <div class="flex items-center justify-between h-16 md:h-20">
-      <!-- Site branding -->
-      <div class="flex-shrink-0 mr-4">
-        <!-- Logo -->
-        <a class="block" href="/" aria-label="Cruip">
-          <svg class="w-8 h-8" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient cx="21.152%" cy="86.063%" fx="21.152%" fy="86.063%" r="79.941%" id="header-logo">
-                <stop stop-color="#4FD1C5" offset="0%"></stop>
-                <stop stop-color="#81E6D9" offset="25.871%"></stop>
-                <stop stop-color="#338CF5" offset="100%"></stop>
-              </radialGradient>
-            </defs>
-            <rect width="32" height="32" rx="16" fill="url(#header-logo)" fill-rule="nonzero"></rect>
+  <div class="h-12 xl:h-20 grid xl:grid-cols-[2fr_minmax(200px,_1fr)_2fr] items-center">
+    <ul class="hidden xl:flex gap-8">
+      <li>关于我们</li>
+      <li>可持续发展</li>
+      <li>宝石</li>
+    </ul>
+    <a href="/">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 433.722 38.763" class="w-48 mx-auto">
+        <path
+          d="M34.388,11.861a20.066,20.066,0,0,0-1.666-1.795A17.246,17.246,0,0,0,21.1,6.05,13.287,13.287,0,0,0,7.647,19.273v.108c0,7.71,5.632,13.385,14.108,13.385,3.913,0,8.953-1.124,11.5-2.838V23.507h-11.2V17.779H39.717V32.927a30.953,30.953,0,0,1-18.2,5.836C8.536,38.763,0,30.41,0,19.488v-.107C0,8.888,8.892,0,21.4,0c7.232,0,11.679,1.821,15.946,5.086A13.525,13.525,0,0,1,39.9,7.769l-5.51,4.092ZM110.533.642V38.12h7.309V11.351L131.5,38.007h4.128L149.71,11.243V38.12h7.445V.642h-9.767L133.844,27.163,120.3.642Zm67.019,0V38.12h7.291V22.861h17.366v-6H184.843V6.639H207.25v-6Zm45.454,0V38.12H230.3V.642Zm26.359,0V38.12h31.654V32.231H256.657V21.573h19.621v-5.89H256.657V6.532h24.065V.642ZM59.806.642V38.12H91.461V32.231H67.1V21.573H86.72v-5.89H67.1V6.532H91.164V.642ZM298.9.642V38.12H332.36v-6H306.187V.642Zm56.748,6H364.2c9.116,0,15.069,5.408,15.069,12.742v.107c0,7.335-5.953,12.636-15.069,12.636h-8.557V6.639Zm-7.626-6V38.12H364.2c13.642,0,23.066-8.192,23.066-18.739v-.108C387.266,8.727,377.842.642,364.2.642Zm52.268,32.017a29.012,29.012,0,0,0,18.014,6c9.068,0,15.423-4.176,15.423-11.189v-.108c0-6.21-4.688-9.048-13.819-10.975-8.328-1.713-10.3-3-10.3-5.889v-.107c0-2.463,2.591-4.444,7.033-4.444A21.475,21.475,0,0,1,428.355,9.8l4.071-4.979A26.3,26.3,0,0,0,416.758.107c-8.576,0-14.745,4.444-14.745,10.869v.107c0,6.906,5.182,9.262,14.373,11.189,8.019,1.607,9.749,3.052,9.749,5.729v.107c0,2.784-2.962,4.711-7.65,4.711a21.687,21.687,0,0,1-13.635-4.871l-4.565,4.711Z"
+        ></path>
+      </svg>
+    </a>
+    <ul class="hidden xl:flex xl:justify-end gap-6">
+      <li>
+        <a href="/contact/" class="nav nav--top">联系我们</a>
+      </li>
+      <li>
+        <a href="/press/" class="nav nav--top">媒体下载</a>
+      </li>
+      <li>
+        <a href="https://www.gemfieldsgroup.com/" class="nav nav--top"
+          >GEMFIELDS集团 <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 8.71 8.7"
+            class="inline w-[10px] h-[10px] mb-1 ml-2"
+            ><path
+              fill="none"
+              stroke="#1d1d1b"
+              stroke-miterlimit="10"
+              stroke-width=".62604719"
+              d="M8.39 5.45v2.93H.31V.31h2.84m1.94 0h3.3V3.5M2.73 5.97L8.23.48"></path></svg
+          ></a
+        >
+      </li>
+      <li>
+        <a href="https://gemfieldsfoundation.org/" class="nav nav--top"
+          >GEMFIELDS基金会 <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 8.71 8.7"
+            class="inline w-[10px] h-[10px] mb-1 ml-2"
+          >
+            <path
+              fill="none"
+              stroke="#1d1d1b"
+              stroke-miterlimit="10"
+              stroke-width=".62604719"
+              d="M8.39 5.45v2.93H.31V.31h2.84m1.94 0h3.3V3.5M2.73 5.97L8.23.48"
+            >
+            </path>
           </svg>
         </a>
-      </div>
-
-      <!-- Desktop navigation -->
-      <nav class="hidden md:flex md:flex-grow">
-        <!-- Desktop menu links -->
-        <ul class="flex flex-grow justify-end flex-wrap items-center">
-          <li>
-            <a class="text-gray-600 hover:text-gray-900 px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out" href="/pricing">价格</a>
-          </li>
-          <li>
-            <a class="text-gray-600 hover:text-gray-900 px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out" href="/about">关于我们</a>
-          </li>
-          <li>
-            <a class="text-gray-600 hover:text-gray-900 px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out" href="/tutorials">教程</a>
-          </li>
-          <li>
-            <a class="text-gray-600 hover:text-gray-900 px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out" href="/blog">博客</a>
-          </li>
-          <!-- 1st level: hover -->
-          <li class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-            <a
-              class="text-gray-600 hover:text-gray-900 px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out"
-              href="#0"
-              aria-haspopup="true"
-              :aria-expanded="open"
-              @focus="open = true"
-              @focusout="open = false"
-              @click.prevent
-              aria-expanded="false"
+      </li>
+      <li>
+        <button>
+          <svg xmlns="http://www.w3.org/2000/svg" width="12.6" height="12.6" viewBox="0 0 12.6 12.6">
+            <path
+              fill="#707070"
+              d="M12.6 11.49L9.98 8.87a5.42 5.42 0 001.11-3.32A5.51 5.51 0 005.55 0 5.51 5.51 0 000 5.55a5.51 5.51 0 005.55 5.54A5.42 5.42 0 008.88 10l2.6 2.61zM1.58 5.55a3.92 3.92 0 013.97-3.96A3.92 3.92 0 019.5 5.54 3.92 3.92 0 015.55 9.5a3.92 3.92 0 01-3.96-3.96z"
+              class="search-icon"
             >
-              资源
-              <svg class="w-3 h-3 fill-current text-gray-400 cursor-pointer ml-1 flex-shrink-0" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10.28 4.305L5.989 8.598 1.695 4.305A1 1 0 00.28 5.72l5 5a1 1 0 001.414 0l5-5a1 1 0 10-1.414-1.414z"></path>
-              </svg>
-            </a>
-            <!-- 2nd level: hover -->
-            <ul
-              class="origin-top-right absolute top-full right-0 w-40 bg-white py-2 ml-4 rounded shadow-lg"
-              x-show="open"
-              x-transition:enter="transition ease-out duration-200 transform"
-              x-transition:enter-start="opacity-0 -translate-y-2"
-              x-transition:enter-end="opacity-100 translate-y-0"
-              x-transition:leave="transition ease-out duration-200"
-              x-transition:leave-start="opacity-100"
-              x-transition:leave-end="opacity-0"
-              x-cloak
-            >
-              <li>
-                <a class="font-medium text-sm text-gray-600 hover:text-gray-900 flex py-2 px-5 leading-tight" href="/documentation" @focus="open = true" @focusout="open = false">文档</a>
-              </li>
-              <li>
-                <a class="font-medium text-sm text-gray-600 hover:text-gray-900 flex py-2 px-5 leading-tight" href="/support" @focus="open = true" @focusout="open = false">支持中心</a>
-              </li>
-              <li>
-                <a class="font-medium text-sm text-gray-600 hover:text-gray-900 flex py-2 px-5 leading-tight" href="/404" @focus="open = true" @focusout="open = false">404</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-
-        <!-- Desktop sign in links -->
-        <ul class="flex flex-grow justify-end flex-wrap items-center">
-          <li>
-            <a class="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out" href="/signin">登入</a>
-          </li>
-          <li>
-            <a class="btn-sm text-gray-200 bg-gray-900 hover:bg-gray-800 ml-3" href="/signup">
-              <span>注册</span>
-              <svg class="w-3 h-3 fill-current text-gray-400 flex-shrink-0 ml-2 -mr-1" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
-                <path d="M11.707 5.293L7 .586 5.586 2l3 3H0v2h8.586l-3 3L7 11.414l4.707-4.707a1 1 0 000-1.414z" fill-rule="nonzero"></path>
-              </svg>
-            </a>
-          </li>
-        </ul>
-      </nav>
-
-      <!-- Mobile menu -->
-      <div class="flex md:hidden" x-data="{ expanded: false }">
-        <!-- Hamburger button -->
-        <button class="hamburger" :class="{ 'active': expanded }" @click.stop="expanded = !expanded" aria-controls="mobile-nav" :aria-expanded="expanded">
-          <span class="sr-only">Menu</span>
-          <svg class="w-6 h-6 fill-current text-gray-900" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <rect y="4" width="24" height="2"></rect>
-            <rect y="11" width="24" height="2"></rect>
-            <rect y="18" width="24" height="2"></rect>
+            </path>
           </svg>
         </button>
-
-        <!-- Mobile navigation -->
-        <nav
-          id="mobile-nav"
-          class="absolute top-full h-screen pb-16 z-20 left-0 w-full overflow-scroll bg-white"
-          @click.away="expanded = false"
-          @keydown.escape.window="expanded = false"
-          x-show="expanded"
-          x-transition:enter="transition ease-out duration-200 transform"
-          x-transition:enter-start="opacity-0 -translate-y-2"
-          x-transition:enter-end="opacity-100 translate-y-0"
-          x-transition:leave="transition ease-out duration-200"
-          x-transition:leave-start="opacity-100"
-          x-transition:leave-end="opacity-0"
-          x-cloak
+      </li>
+      <li>
+        <button
+          aria-label="Open Menu"
+          class="flex flex-col pt-1"
+          :class='{ "absolute top-10 right-12 z-50" : modal }'
+          @click.stop="modal = !modal"
+          @keydown.escape.window="modal = false"
         >
-          <ul class="px-5 py-2">
+          <span class="w-8 border-b border-neutral-500 duration-300 origin-center" :class='{ "rotate-45" : modal }'
+          ></span>
+          <span class="w-8 border-b border-neutral-500 my-[5px] duration-300" :class='{ "hidden" : modal }'></span>
+          <span class="w-8 border-b border-neutral-500 duration-300 origin-center" :class='{ "-rotate-45" : modal }'
+          ></span>
+        </button>
+      </li>
+      <section
+        class="absolute w-full h-screen z-40 inset-0 overflow-y-auto bg-white"
+        x-cloak
+        x-show="modal"
+        x-transition:enter="transition-all ease-out duration-300"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition-all ease-in duration-300"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+      >
+        <div class="h-20 flex justify-center items-center">
+          <a href="/">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 433.722 38.763" class="w-48 mx-auto">
+              <path
+                d="M34.388,11.861a20.066,20.066,0,0,0-1.666-1.795A17.246,17.246,0,0,0,21.1,6.05,13.287,13.287,0,0,0,7.647,19.273v.108c0,7.71,5.632,13.385,14.108,13.385,3.913,0,8.953-1.124,11.5-2.838V23.507h-11.2V17.779H39.717V32.927a30.953,30.953,0,0,1-18.2,5.836C8.536,38.763,0,30.41,0,19.488v-.107C0,8.888,8.892,0,21.4,0c7.232,0,11.679,1.821,15.946,5.086A13.525,13.525,0,0,1,39.9,7.769l-5.51,4.092ZM110.533.642V38.12h7.309V11.351L131.5,38.007h4.128L149.71,11.243V38.12h7.445V.642h-9.767L133.844,27.163,120.3.642Zm67.019,0V38.12h7.291V22.861h17.366v-6H184.843V6.639H207.25v-6Zm45.454,0V38.12H230.3V.642Zm26.359,0V38.12h31.654V32.231H256.657V21.573h19.621v-5.89H256.657V6.532h24.065V.642ZM59.806.642V38.12H91.461V32.231H67.1V21.573H86.72v-5.89H67.1V6.532H91.164V.642ZM298.9.642V38.12H332.36v-6H306.187V.642Zm56.748,6H364.2c9.116,0,15.069,5.408,15.069,12.742v.107c0,7.335-5.953,12.636-15.069,12.636h-8.557V6.639Zm-7.626-6V38.12H364.2c13.642,0,23.066-8.192,23.066-18.739v-.108C387.266,8.727,377.842.642,364.2.642Zm52.268,32.017a29.012,29.012,0,0,0,18.014,6c9.068,0,15.423-4.176,15.423-11.189v-.108c0-6.21-4.688-9.048-13.819-10.975-8.328-1.713-10.3-3-10.3-5.889v-.107c0-2.463,2.591-4.444,7.033-4.444A21.475,21.475,0,0,1,428.355,9.8l4.071-4.979A26.3,26.3,0,0,0,416.758.107c-8.576,0-14.745,4.444-14.745,10.869v.107c0,6.906,5.182,9.262,14.373,11.189,8.019,1.607,9.749,3.052,9.749,5.729v.107c0,2.784-2.962,4.711-7.65,4.711a21.687,21.687,0,0,1-13.635-4.871l-4.565,4.711Z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+        <div class="my-24 flex justify-center">
+          <form>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.398 19.528" class="w-8 h-8">
+              <g>
+                <line
+                  x2="4.539"
+                  y2="4.68"
+                  transform="translate(1307.5 134.5)"
+                  fill="none"
+                  stroke="#000"
+                  stroke-width="1"></line>
+                <g fill="none" stroke="#000" stroke-width="1">
+                  <circle data-v-720aa0a7="" cx="8.5" cy="8.5" r="8.5" stroke="none"></circle>
+                  <circle data-v-720aa0a7="" cx="8.5" cy="8.5" r="8" fill="none"></circle>
+                </g>
+              </g>
+            </svg>
+            <input type="text" placeholder="搜索" required="required" class="field text-input heading-5" />
+          </form>
+        </div>
+        <div class="max-w-7xl mx-auto grid grid-cols-5 leading-extra-loose">
+          <div class="h-12"><h4>关于我们</h4></div>
+          <div class="h-12"><h4>可持续发展</h4></div>
+          <div class="h-12"><h4>宝石</h4></div>
+          <div class="col-span-5 mb-6 w-full h-px bg-neutral-200"></div>
+          <ul class="text-neutral-500">
             <li>
-              <a class="flex text-gray-600 hover:text-gray-900 py-2" href="/pricing">价格</a>
-            </li>
-            <li>
-              <a class="flex text-gray-600 hover:text-gray-900 py-2" href="/about">关于我们</a>
-            </li>
-            <li>
-              <a class="flex text-gray-600 hover:text-gray-900 py-2" href="/tutorials">教程</a>
-            </li>
-            <li>
-              <a class="flex text-gray-600 hover:text-gray-900 py-2" href="/blog">博客</a>
-            </li>
-            <li class="py-2 my-2 border-t border-b border-gray-200">
-              <span class="flex text-gray-600 hover:text-gray-900 py-2">资源</span>
-              <ul class="pl-4">
-                <li>
-                  <a class="text-sm flex font-medium text-gray-600 hover:text-gray-900 py-2" href="/documentation">文档</a>
-                </li>
-                <li>
-                  <a class="text-sm flex font-medium text-gray-600 hover:text-gray-900 py-2" href="support.html">支持中心</a>
-                </li>
-                <li>
-                  <a class="text-sm flex font-medium text-gray-600 hover:text-gray-900 py-2" href="/404">404</a>
-                </li>
+              <a href="#1" class="nav nav--top">我们的宝石矿与品牌</a>
+              <ul class="pl-6">
+                <li><a href="#11" class="nav nav--top">蒙特普埃兹红宝石矿</a></li>
+                <li><a href="#12" class="nav nav--top">卡棋穆祖母绿矿</a></li>
+                <li><a href="#13" class="nav nav--top">费伯奇</a></li>
               </ul>
             </li>
-            <li>
-              <a class="flex font-medium w-full text-gray-600 hover:text-gray-900 py-2 justify-center" href="/signin">登入</a>
-            </li>
-            <li>
-              <a class="btn-sm text-gray-200 bg-gray-900 hover:bg-gray-800 w-full my-2" href="/signup">
-                <span>注册</span>
-                <svg class="w-3 h-3 fill-current text-gray-400 flex-shrink-0 ml-2 -mr-1" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M11.707 5.293L7 .586 5.586 2l3 3H0v2h8.586l-3 3L7 11.414l4.707-4.707a1 1 0 000-1.414z" fill="#999" fill-rule="nonzero"></path>
-                </svg>
-              </a>
-            </li>
+            <li><a href="#2" class="nav nav--top">我们的销售流程</a></li>
+            <li><a href="#3" class="nav nav--top">我们的认证拍卖伙伴</a></li>
+            <li><a href="#4" class="nav nav--top">大事记</a></li>
+            <li><a href="#5" class="nav nav--top">常见问题</a></li>
+            <li><a href="#6" class="nav nav--top">影片</a></li>
+            <li><a href="#7" class="nav nav--top">关于GEMFIELDS</a></li>
           </ul>
-        </nav>
-      </div>
-    </div>
+
+          <ul class="text-neutral-500">
+            <li><a href="#1" class="nav nav--top">我们的可持续发展</a></li>
+            <li><a href="#2" class="nav nav--top">员工与环境</a></li>
+            <li><a href="#3" class="nav nav--top">社区</a></li>
+            <li><a href="#4" class="nav nav--top">野生动物保护</a></li>
+            <li><a href="#5" class="nav nav--top">行业伙伴</a></li>
+          </ul>
+
+          <ul class="text-neutral-500">
+            <li><a href="#1" class="nav nav--top">介绍</a></li>
+            <li><a href="#2" class="nav nav--top">祖母绿</a></li>
+            <li><a href="#3" class="nav nav--top">红宝石</a></li>
+            <li><a href="#4" class="nav nav--top">宝石购买指南</a></li>
+            <li><a href="#5" class="nav nav--top">研究与报告</a></li>
+          </ul>
+
+          <ul class="text-neutral-500">
+            <li><a href="#1" class="nav nav--top">联系我们</a></li>
+          </ul>
+
+          <ul class="text-neutral-500">
+            <li><a href="#1" class="nav nav--top">媒体下载</a></li>
+          </ul>
+
+          <div class="mt-16 h-12">
+            <a href="https://gemfieldsfoundation.org/" class="nav nav--top"
+              >GEMFIELDS集团 <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 8.71 8.7"
+                class="inline w-[10px] h-[10px] mb-1 ml-2"
+              >
+                <path
+                  fill="none"
+                  stroke="#1d1d1b"
+                  stroke-miterlimit="10"
+                  stroke-width=".62604719"
+                  d="M8.39 5.45v2.93H.31V.31h2.84m1.94 0h3.3V3.5M2.73 5.97L8.23.48"
+                >
+                </path>
+              </svg>
+            </a>
+          </div>
+          <div class="mt-16 h-12">
+            <a href="https://gemfieldsfoundation.org/" class="nav nav--top"
+              >GEMFIELDS基金会 <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 8.71 8.7"
+                class="inline w-[10px] h-[10px] mb-1 ml-2"
+              >
+                <path
+                  fill="none"
+                  stroke="#1d1d1b"
+                  stroke-miterlimit="10"
+                  stroke-width=".62604719"
+                  d="M8.39 5.45v2.93H.31V.31h2.84m1.94 0h3.3V3.5M2.73 5.97L8.23.48"
+                >
+                </path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="max-w-7xl mx-auto border-t border-neutral-200">
+          <div class="pt-12 pb-28 flex flex-col items-center">
+            <h5 class="py-4 text-xs text-black tracking-wider uppercase">关注 Gemfields</h5>
+            <ul class="py-2 flex gap-8 md:gap-12 text-xs text-white md:text-neutral-300 tracking-wider uppercase">
+              <li>
+                <a target="_blank" href="https://instagram.com/gemfields" class="nav nav--modal">Instagram</a>
+              </li>
+              <li>
+                <a target="_blank" href="https://facebook.com/gemfields" class="nav nav--modal">Facebook</a>
+              </li>
+              <li>
+                <a target="_blank" href="https://twitter.com/gemfieldsltd" class="nav nav--modal">Twitter</a>
+              </li>
+              <li>
+                <a target="_blank" href="https://weibo.com/gemfields" class="nav nav--modal">微博</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-neutral-200">
+          <div class="p-4 md:p-8 grid md:grid-cols-3 text-xs tracking-wider">
+            <div class="py-2 text-center mb-4 md:mb-0 text-white md:text-neutral-400">
+              <a href="/legal/" class="nav nav--modal">法律声明</a>
+            </div>
+            <div class="text-center md:text-left py-2 mb-12 md:mb-0 md:order-first">© GEMFIELDS 2023</div>
+            <div></div>
+          </div>
+        </div>
+      </section>
+    </ul>
   </div>
 </header>
+
+<style is:global>
+  .nav {
+    @apply relative py-1 leading-normal duration-300;
+  }
+  .nav--top::after {
+    @apply content-[''] absolute left-0 bottom-0 bg-black w-0 h-px duration-300;
+  }
+  .nav--top:hover::after {
+    @apply w-full;
+  }
+  .nav--modal {
+    @apply duration-300;
+  }
+  .nav--modal:hover {
+    @apply text-black;
+  }
+  .nav--modal::after {
+    @apply content-[''] absolute left-0 bottom-0 bg-black w-0 h-px duration-300;
+  }
+  .nav--modal:hover::after {
+    @apply w-full;
+  }
+</style>
