@@ -7,13 +7,15 @@ import { Picture } from '@astrojs/image/components'
     src={import('~/assets/images/gemstones_desktop_banner.webp')}
     widths={[1920]}
     format={['avif', 'webp']}
+    loading="eager"
     alt="Hero image"
     class="hidden md:block w-full h-[calc(100vh-7rem)] object-cover"
   />
   <Picture
     src={import('~/assets/images/gemstones_mobile_banner.webp')}
-    widths={[1920]}
+    widths={[1080]}
     format={['avif', 'webp']}
+    loading="eager"
     alt="Hero image"
     class="md:hidden w-full h-[calc(100vh-4rem)] object-cover"
   />
