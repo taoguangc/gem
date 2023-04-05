@@ -1,12 +1,15 @@
 ---
+import { site } from '~/utils/site.json'
 import Layout from '~/layouts/Layout.astro'
 import Hero from '~/components/home/Hero.astro'
 import Story from '~/components/home/Story.astro'
 import Joint from '~/components/home/Joint.astro'
 import Brand from '~/components/home/Brand.astro'
+
+export const test = '123'
 ---
 
-<Layout title="首页">
+<Layout {site}>
   <Hero />
   <Story />
   <Joint />

@@ -31,9 +31,73 @@ const items = [
   :class='{ "fixed" : atTop }'
 >
   <div class="h-12 xl:h-20 grid xl:grid-cols-[2fr_minmax(200px,_1fr)_2fr] items-center">
-    <ul class="hidden xl:flex gap-8">
-      <li>关于我们</li>
-      <li>可持续发展</li>
+    <ul class="hidden xl:flex gap-8" x-data="{ open: null, timeout: null }">
+      <li>
+        <a
+          href="#1"
+          @mouseenter="open = 1; clearTimeout(timeout)"
+          @mouseleave="timeout = setTimeout(() => { open = null }, 600)"
+          aria-haspopup="true"
+          :aria-expanded="open"
+          @click.prevent
+          aria-expanded="false"
+          class="block"
+          :class="open === 1 && 'text-neutral-300'"
+        >
+          关于我们
+        </a>
+        <div
+          x-show="open === 1"
+          x-cloak
+          @mouseenter="open = 1; clearTimeout(timeout)"
+          @mouseleave="timeout = setTimeout(() => { open = null }, 600)"
+          x-transition
+          class="absolute w-full left-0 top-20 mt-px bg-white shadow-[0_10px_15px_-3px_rgba(0,0,0,0.02),0_4px_6px_-2px_rgba(0,0,0,0.01)] px-8 py-6 border-b border-neutral-200 z-0"
+        >
+          <ul class="w-full flex gap-8">
+            <li><a href="#101" class="nav nav--top">我们的宝石矿与品牌</a></li>
+            <li><a href="#102" class="nav nav--top">我们的销售流程</a></li>
+            <li><a href="#103" class="nav nav--top">我们的认证拍卖伙伴</a></li>
+            <li><a href="#104" class="nav nav--top">大事记</a></li>
+            <li><a href="#105" class="nav nav--top">常见问题</a></li>
+            <li><a href="#106" class="nav nav--top">影片</a></li>
+            <li><a href="#107" class="nav nav--top">关于GEMFIELDS</a></li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <a
+          href="#2"
+          @mouseenter="open = 2; clearTimeout(timeout)"
+          @mouseleave="timeout = setTimeout(() => { open = null }, 600)"
+          aria-haspopup="true"
+          :aria-expanded="open"
+          @click.prevent
+          aria-expanded="false"
+          class="block"
+          :class="open === 2 && 'text-neutral-300'"
+        >
+          可持续发展
+        </a>
+        <div
+          x-show="open === 2"
+          x-cloak
+          @mouseenter="open = 2; clearTimeout(timeout)"
+          @mouseleave="timeout = setTimeout(() => { open = null }, 600)"
+          x-transition
+          class="absolute w-full left-0 top-20 mt-px bg-white shadow-[0_10px_15px_-3px_rgba(0,0,0,0.02),0_4px_6px_-2px_rgba(0,0,0,0.01)] px-8 py-6 border-b border-neutral-200 z-0"
+        >
+          <ul class="w-full flex gap-8">
+            <li><a href="#101" class="nav nav--top">我们的宝石矿与品牌</a></li>
+            <li><a href="#102" class="nav nav--top">我们的销售流程</a></li>
+            <li><a href="#103" class="nav nav--top">我们的认证拍卖伙伴</a></li>
+            <li><a href="#104" class="nav nav--top">大事记</a></li>
+            <li><a href="#105" class="nav nav--top">常见问题</a></li>
+            <li><a href="#106" class="nav nav--top">影片</a></li>
+            <li><a href="#107" class="nav nav--top">关于GEMFIELDS</a></li>
+          </ul>
+        </div>
+      </li>
       <li>宝石</li>
     </ul>
     <a href="/">

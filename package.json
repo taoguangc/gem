@@ -1,7 +1,7 @@
 {
   "name": "astro-vcard",
   "description": "A template to make your website using Astro + Tailwind CSS.",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "private": true,
   "type": "module",
   "scripts": {
