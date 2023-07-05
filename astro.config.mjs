@@ -8,8 +8,5 @@ import image from '@astrojs/image'
 export default defineConfig({
   integrations: [mdx(), tailwind(), alpinejs(), image({
     serviceEntryPoint: '@astrojs/image/sharp'
-  })],
-  image: {
-    service: "astro/assets/services/sharp"
-  }
+  })]
 });
